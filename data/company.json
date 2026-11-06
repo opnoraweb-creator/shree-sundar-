@@ -26,11 +26,11 @@
   "facebook": "",
   "youtube": ""
 },
-
-  "map": {
-    "googleMapsUrl": "",
-    "embedUrl": ""
-  },
+"map": {
+  "googleMapsUrl": "https://maps.app.goo.gl/paHntTtS2K9RbG6B6",
+  "embedUrl": ""
+}
+,
 "services": [
   {
     "name": "Residential Plots",
