@@ -1,0 +1,113 @@
+{
+  "company": {
+    "name": "Shree Sundar Enterprises",
+    "shortName": "SHREE SUNDAR",
+    "tagline": "ENTERPRISES",
+    "heroHeading": "Building A Better Tomorrow",
+    "description": "Your Trusted Partner for Real Estate, Property, Construction, Distribution, Trading and Consultancy Services.",
+    "aboutHeading": "Building Trust Through Quality & Commitment",
+    "aboutDescription": "Shree Sundar Enterprises is focused on delivering professional services across Real Estate, Property, Construction, Distribution, Trading and Consultancy. Our aim is to provide reliable solutions, quality work and a professional experience to every customer.",
+    "address": "",
+    "location": "",
+    "logo": "assets/images/logo/logo.png",
+    "ownerPhoto": "assets/images/owner/owner.jpg",
+    "aboutPhoto": "assets/images/gallery/about.jpg"
+  },
+
+  "contact": {
+    "primaryPhone": "9414614853",
+    "secondaryPhone": "9214481453",
+    "whatsappNumber": "919414614853",
+    "email": ""
+  },
+
+  "social": {
+    "instagram": "",
+    "facebook": "",
+    "youtube": ""
+  },
+
+  "map": {
+    "googleMapsUrl": "",
+    "embedUrl": ""
+  },
+
+  "services": [
+    {
+      "name": "Real Estate & Property",
+      "description": "Property related services and assistance for your real estate requirements.",
+      "image": "assets/images/services/real-estate.jpg"
+    },
+    {
+      "name": "Construction & Development",
+      "description": "Construction and development services with a focus on quality and planning.",
+      "image": "assets/images/services/construction.jpg"
+    },
+    {
+      "name": "Distribution & Trading",
+      "description": "Distribution and trading solutions for business requirements.",
+      "image": "assets/images/services/distribution.jpg"
+    },
+    {
+      "name": "Consultancy Services",
+      "description": "Professional consultancy and guidance for your business needs.",
+      "image": "assets/images/services/consultancy.jpg"
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "Construction Project",
+      "category": "Construction",
+      "description": "Project showcase",
+      "image": "assets/images/projects/construction/project-1.jpg"
+    },
+    {
+      "title": "Property Project",
+      "category": "Real Estate",
+      "description": "Project showcase",
+      "image": "assets/images/projects/real-estate/project-1.jpg"
+    },
+    {
+      "title": "Business Project",
+      "category": "Distribution",
+      "description": "Project showcase",
+      "image": "assets/images/projects/building-material/project-1.jpg"
+    }
+  ],
+
+  "gallery": [
+    {
+      "title": "Project Photo 1",
+      "image": "assets/images/gallery/photo-1.jpg"
+    },
+    {
+      "title": "Project Photo 2",
+      "image": "assets/images/gallery/photo-2.jpg"
+    },
+    {
+      "title": "Project Photo 3",
+      "image": "assets/images/gallery/photo-3.jpg"
+    },
+    {
+      "title": "Project Photo 4",
+      "image": "assets/images/gallery/photo-4.jpg"
+    },
+    {
+      "title": "Project Photo 5",
+      "image": "assets/images/gallery/photo-5.jpg"
+    },
+    {
+      "title": "Project Photo 6",
+      "image": "assets/images/gallery/photo-6.jpg"
+    }
+  ],
+
+  "settings": {
+    "showInstagram": true,
+    "showGoogleMaps": true,
+    "showProjects": true,
+    "showGallery": true,
+    "enableImageZoom": true
+  }
+}
