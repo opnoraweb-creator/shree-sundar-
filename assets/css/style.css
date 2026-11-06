@@ -1097,3 +1097,55 @@ body.lightbox-open {
         height: 29px;
     }
 }
+/* =====================================
+   CONTACT CARDS - BRAND COLORS
+===================================== */
+
+/* Call - Blue */
+.contact-card:nth-child(1) span,
+.contact-card:nth-child(2) span {
+    color: #2878C8;
+}
+
+/* WhatsApp - Green */
+.contact-card:nth-child(3) span {
+    color: #20B85A;
+}
+
+/* Instagram - Pink */
+.contact-card:nth-child(4) span {
+    color: #E1306C;
+}
+
+/* Google Maps - Red */
+.contact-card:nth-child(5) span {
+    color: #EA4335;
+}
+
+/* Icon backgrounds */
+.contact-card:nth-child(1) span,
+.contact-card:nth-child(2) span {
+    background: #EAF3FF;
+}
+
+.contact-card:nth-child(3) span {
+    background: #E8F9EF;
+}
+
+.contact-card:nth-child(4) span {
+    background: #FCEAF1;
+}
+
+.contact-card:nth-child(5) span {
+    background: #FDECEC;
+}
+
+.contact-card span {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+}
