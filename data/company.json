@@ -31,29 +31,20 @@
     "googleMapsUrl": "",
     "embedUrl": ""
   },
-
-  "services": [
-    {
-      "name": "Real Estate & Property",
-      "description": "Property related services and assistance for your real estate requirements.",
-      "image": "assets/images/services/real-estate.jpg"
-    },
-    {
-      "name": "Construction & Development",
-      "description": "Construction and development services with a focus on quality and planning.",
-      "image": "assets/images/services/construction.jpg"
-    },
-    {
-      "name": "Distribution & Trading",
-      "description": "Distribution and trading solutions for business requirements.",
-      "image": "assets/images/services/distribution.jpg"
-    },
-    {
-      "name": "Consultancy Services",
-      "description": "Professional consultancy and guidance for your business needs.",
-      "image": "assets/images/services/consultancy.jpg"
-    }
-  ],
+"services": [
+  {
+    "name": "Residential Plots",
+    "description": "Residential plot options for people looking for a suitable place to build a home."
+  },
+  {
+    "name": "Commercial Plots",
+    "description": "Commercial plot options for shops, offices and business requirements."
+  },
+  {
+    "name": "Agricultural Land",
+    "description": "Agricultural land options for customers looking for land-related opportunities."
+  }
+],
 
   "projects": [
     {
