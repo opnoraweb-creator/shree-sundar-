@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shree-sundar-enterprises-pali.digiprofiles.in/sitemap.xml
