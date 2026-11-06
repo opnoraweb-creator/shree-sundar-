@@ -21,11 +21,11 @@
     "email": ""
   },
 
-  "social": {
-    "instagram": "",
-    "facebook": "",
-    "youtube": ""
-  },
+ "social": {
+  "instagram": "https://www.instagram.com/vijendra.sharma.7568/",
+  "facebook": "",
+  "youtube": ""
+},
 
   "map": {
     "googleMapsUrl": "",
