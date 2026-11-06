@@ -1,128 +1,244 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    "use strict";
+
+    // =====================================
+    // LIGHTBOX ELEMENTS
+    // =====================================
+
     const lightbox = document.getElementById("lightbox");
+
     const lightboxImage = document.getElementById("lightboxImage");
+
     const closeButton = document.getElementById("lightboxClose");
-    const prevButton = document.getElementById("lightboxPrev");
+
+    const previousButton = document.getElementById("lightboxPrev");
+
     const nextButton = document.getElementById("lightboxNext");
 
-    if (!lightbox || !lightboxImage) return;
 
-    // All gallery images
-    let images = [];
-    let currentIndex = 0;
-
-    function collectImages() {
-        images = Array.from(
-            document.querySelectorAll(
-                ".zoom-image, .gallery-grid img"
-            )
-        ).filter(function (img) {
-            return img.complete && img.naturalWidth > 0;
-        });
+    if (
+        !lightbox ||
+        !lightboxImage ||
+        !closeButton ||
+        !previousButton ||
+        !nextButton
+    ) {
+        console.warn("Image zoom elements not found.");
+        return;
     }
 
-    function openLightbox(index) {
+
+    // =====================================
+    // COLLECT IMAGES
+    // =====================================
+
+    let images = [];
+
+    let currentIndex = 0;
+
+
+    function collectImages() {
+
+        images = Array.from(
+            document.querySelectorAll(".zoom-image")
+        ).filter(function (image) {
+
+            return image.src && image.complete && image.naturalWidth > 0;
+
+        });
+
+    }
+
+
+    // =====================================
+    // OPEN IMAGE
+    // =====================================
+
+    function openImage(index) {
+
         collectImages();
 
         if (!images.length) return;
 
-        currentIndex = index;
+        currentIndex = (index + images.length) % images.length;
 
-        lightboxImage.src = images[currentIndex].src;
-        lightboxImage.alt = images[currentIndex].alt || "Photo";
+        const selectedImage = images[currentIndex];
+
+        lightboxImage.src = selectedImage.src;
+
+        lightboxImage.alt =
+            selectedImage.alt || "Property Image";
 
         lightbox.classList.add("active");
+
         lightbox.setAttribute("aria-hidden", "false");
 
-        document.body.classList.add("lightbox-open");
+        document.body.style.overflow = "hidden";
+
+        updateButtons();
+
     }
 
-    function closeLightbox() {
+
+    // =====================================
+    // CLOSE IMAGE
+    // =====================================
+
+    function closeImage() {
+
         lightbox.classList.remove("active");
+
         lightbox.setAttribute("aria-hidden", "true");
 
         lightboxImage.src = "";
 
-        document.body.classList.remove("lightbox-open");
+        document.body.style.overflow = "";
+
     }
 
-    function showNext() {
+
+    // =====================================
+    // NEXT IMAGE
+    // =====================================
+
+    function nextImage() {
+
         if (!images.length) return;
 
-        currentIndex = (currentIndex + 1) % images.length;
+        openImage(currentIndex + 1);
 
-        lightboxImage.src = images[currentIndex].src;
-        lightboxImage.alt = images[currentIndex].alt || "Photo";
     }
 
-    function showPrevious() {
+
+    // =====================================
+    // PREVIOUS IMAGE
+    // =====================================
+
+    function previousImage() {
+
         if (!images.length) return;
 
-        currentIndex =
-            (currentIndex - 1 + images.length) % images.length;
+        openImage(currentIndex - 1);
 
-        lightboxImage.src = images[currentIndex].src;
-        lightboxImage.alt = images[currentIndex].alt || "Photo";
     }
 
-    // Image click
-    document.addEventListener("click", function (event) {
 
-        const image = event.target.closest(".zoom-image");
+    // =====================================
+    // SHOW / HIDE NAVIGATION
+    // =====================================
 
-        if (!image) return;
+    function updateButtons() {
 
-        collectImages();
+        const multipleImages = images.length > 1;
 
-        const index = images.indexOf(image);
+        previousButton.hidden = !multipleImages;
 
-        if (index !== -1) {
-            openLightbox(index);
-        }
+        nextButton.hidden = !multipleImages;
+
+    }
+
+
+    // =====================================
+    // IMAGE CLICK
+    // =====================================
+
+    document.querySelectorAll(".zoom-image").forEach(function (image) {
+
+        image.addEventListener("click", function () {
+
+            collectImages();
+
+            const index = images.indexOf(image);
+
+            if (index !== -1) {
+                openImage(index);
+            }
+
+        });
+
     });
 
-    // Close button
-    if (closeButton) {
-        closeButton.addEventListener("click", closeLightbox);
-    }
 
-    // Next button
-    if (nextButton) {
-        nextButton.addEventListener("click", showNext);
-    }
+    // =====================================
+    // BUTTON EVENTS
+    // =====================================
 
-    // Previous button
-    if (prevButton) {
-        prevButton.addEventListener("click", showPrevious);
-    }
+    closeButton.addEventListener("click", closeImage);
 
-    // Click outside image to close
+    nextButton.addEventListener("click", nextImage);
+
+    previousButton.addEventListener("click", previousImage);
+
+
+    // =====================================
+    // BACKGROUND CLICK TO CLOSE
+    // =====================================
+
     lightbox.addEventListener("click", function (event) {
+
         if (event.target === lightbox) {
-            closeLightbox();
+            closeImage();
         }
+
     });
 
-    // Keyboard controls
+
+    // =====================================
+    // KEYBOARD SUPPORT
+    // =====================================
+
     document.addEventListener("keydown", function (event) {
 
         if (!lightbox.classList.contains("active")) return;
 
         if (event.key === "Escape") {
-            closeLightbox();
+            closeImage();
         }
 
         if (event.key === "ArrowRight") {
-            showNext();
+            nextImage();
         }
 
         if (event.key === "ArrowLeft") {
-            showPrevious();
+            previousImage();
         }
+
     });
 
-    // Refresh images after page loads
-    window.addEventListener("load", collectImages);
+
+    // =====================================
+    // TOUCH SWIPE SUPPORT
+    // =====================================
+
+    let touchStartX = 0;
+
+    let touchEndX = 0;
+
+    lightbox.addEventListener("touchstart", function (event) {
+
+        touchStartX = event.changedTouches[0].screenX;
+
+    }, { passive: true });
+
+
+    lightbox.addEventListener("touchend", function (event) {
+
+        touchEndX = event.changedTouches[0].screenX;
+
+        const difference = touchEndX - touchStartX;
+
+        if (Math.abs(difference) < 50) return;
+
+        if (difference < 0) {
+            nextImage();
+        } else {
+            previousImage();
+        }
+
+    }, { passive: true });
+
+
+    console.log("Property image zoom initialized.");
 
 });
