@@ -2,112 +2,67 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     "use strict";
 
-    // =========================================
+    // =====================================
     // LOAD COMPANY JSON
-    // =========================================
+    // =====================================
 
-    let companyData = {};
+    let data = {};
 
     try {
         const response = await fetch("data/company.json");
 
         if (!response.ok) {
-            throw new Error("Unable to load company.json");
+            throw new Error("Company JSON could not load.");
         }
 
-        companyData = await response.json();
-
-        console.log("Company data loaded successfully.");
+        data = await response.json();
 
     } catch (error) {
-        console.error("Company data loading error:", error);
+        console.error("Company JSON Error:", error);
     }
 
-
-    const company = companyData.company || {};
-    const contact = companyData.contact || {};
-    const social = companyData.social || {};
-    const map = companyData.map || {};
-    const settings = companyData.settings || {};
+    const company = data.company || {};
+    const contact = data.contact || {};
+    const social = data.social || {};
+    const map = data.map || {};
 
 
-    // =========================================
-    // SAFE HTML
-    // =========================================
+    // =====================================
+    // CONTACT DETAILS
+    // =====================================
 
-    function escapeHTML(value) {
-        return String(value ?? "").replace(/[&<>"']/g, function (char) {
-            return {
-                "&": "&amp;",
-                "<": "&lt;",
-                ">": "&gt;",
-                '"': "&quot;",
-                "'": "&#039;"
-            }[char];
-        });
-    }
+    const primaryPhone = String(
+        contact.primaryPhone || "9414614853"
+    ).replace(/\D/g, "");
+
+    const secondaryPhone = String(
+        contact.secondaryPhone || "9214481453"
+    ).replace(/\D/g, "");
+
+    const whatsappNumber = String(
+        contact.whatsappNumber || "919414614853"
+    ).replace(/\D/g, "");
 
 
-    // =========================================
-    // COMPANY NAME AND PAGE DETAILS
-    // =========================================
+    // =====================================
+    // COMPANY NAME
+    // =====================================
 
     document.title =
         (company.name || "Shree Sundar Enterprises") +
-        " | Real Estate & Construction";
+        " | Real Estate & Property";
 
     const brandName = document.querySelector(".brand h2");
 
-    if (brandName) {
-        brandName.textContent =
-            company.shortName || company.name || "SHREE SUNDAR";
+    if (brandName && company.shortName) {
+        brandName.textContent = company.shortName;
     }
 
     const brandTagline = document.querySelector(".brand span");
 
-    if (brandTagline) {
-        brandTagline.textContent = company.tagline || "ENTERPRISES";
+    if (brandTagline && company.tagline) {
+        brandTagline.textContent = company.tagline;
     }
-
-    const footerName = document.querySelector(".footer h2");
-
-    if (footerName) {
-        footerName.textContent =
-            company.name || "Shree Sundar Enterprises";
-    }
-
-    const heroHeading = document.querySelector(".hero-content h1");
-
-    if (heroHeading && company.heroHeading) {
-
-        const headingParts = company.heroHeading.split("\n");
-
-        heroHeading.replaceChildren();
-
-        headingParts.forEach(function (part, index) {
-
-            if (index > 0) {
-                heroHeading.appendChild(document.createElement("br"));
-            }
-
-            const span = document.createElement("span");
-
-            span.textContent = part;
-
-            heroHeading.appendChild(span);
-        });
-    }
-
-    const heroDescription = document.querySelector(".hero-content > p");
-
-    if (heroDescription && company.description) {
-        heroDescription.textContent = company.description;
-    }
-
-
-    // =========================================
-    // LOGO AND OWNER PHOTO
-    // =========================================
 
     const logo = document.querySelector(".brand img");
 
@@ -115,11 +70,28 @@ document.addEventListener("DOMContentLoaded", async function () {
         logo.src = company.logo;
     }
 
+    // Keep the owner name as requested in index.html.
+    const ownerHeading = document.querySelector(".owner-label h3");
+
+    if (ownerHeading) {
+        ownerHeading.textContent = "Shree Vijendra Sharma";
+    }
+
+
+    // =====================================
+    // OWNER PHOTO
+    // =====================================
+
     const ownerPhoto = document.querySelector(".hero-photo img");
 
     if (ownerPhoto && company.ownerPhoto) {
         ownerPhoto.src = company.ownerPhoto;
     }
+
+
+    // =====================================
+    // ABOUT IMAGE
+    // =====================================
 
     const aboutPhoto = document.querySelector(".about-image img");
 
@@ -127,89 +99,52 @@ document.addEventListener("DOMContentLoaded", async function () {
         aboutPhoto.src = company.aboutPhoto;
     }
 
-    const aboutHeading = document.querySelector(".about-content h2");
 
-    if (aboutHeading && company.aboutHeading) {
-        aboutHeading.textContent = company.aboutHeading;
-    }
-
-    const aboutParagraphs = document.querySelectorAll(".about-content > p");
-
-    if (aboutParagraphs.length && company.aboutDescription) {
-        aboutParagraphs[0].textContent = company.aboutDescription;
-    }
-
-
-    // =========================================
-    // PHONE LINKS
-    // =========================================
-
-    const primaryPhone = contact.primaryPhone || "9414614853";
-    const secondaryPhone = contact.secondaryPhone || "9214481453";
+    // =====================================
+    // CALL LINKS
+    // =====================================
 
     document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
 
         const oldHref = link.getAttribute("href") || "";
 
-        if (oldHref.includes("9414614853")) {
+        if (oldHref.includes("92144")) {
+            link.href = "tel:+91" + secondaryPhone;
+        } else {
             link.href = "tel:+91" + primaryPhone;
         }
 
-        if (oldHref.includes("9214481453")) {
-            link.href = "tel:+91" + secondaryPhone;
-        }
-    });
-
-    // Update visible contact numbers
-    document.querySelectorAll(".contact-card").forEach(function (card) {
-
-        const heading = card.querySelector("h3");
-        const paragraph = card.querySelector("p");
-
-        if (!heading || !paragraph) return;
-
-        if (heading.textContent.trim() === "Call Us") {
-
-            if (paragraph.textContent.includes("94146")) {
-                paragraph.textContent = primaryPhone;
-            }
-
-            if (paragraph.textContent.includes("92144")) {
-                paragraph.textContent = secondaryPhone;
-            }
-        }
     });
 
 
-    // =========================================
+    // =====================================
     // WHATSAPP LINKS
-    // =========================================
+    // =====================================
 
-    const whatsappNumber =
-        contact.whatsappNumber || "919414614853";
-
-    document.querySelectorAll('a[href*="wa.me/"]').forEach(function (link) {
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
 
         link.href = "https://wa.me/" + whatsappNumber;
 
         link.target = "_blank";
         link.rel = "noopener noreferrer";
+
     });
 
 
-    // =========================================
-    // TOP INSTAGRAM ICON
-    // =========================================
+    // =====================================
+    // INSTAGRAM LINKS
+    // =====================================
 
-    const topInstagram = document.getElementById("topInstagramLink");
+    const instagramLinks = [
+        document.getElementById("topInstagramLink"),
+        document.getElementById("instagramLink")
+    ];
 
-    const contactInstagram = document.getElementById("instagramLink");
-
-    function setupInstagram(link) {
+    instagramLinks.forEach(function (link) {
 
         if (!link) return;
 
-        if (social.instagram) {
+        if (social.instagram && social.instagram.trim() !== "") {
 
             link.href = social.instagram;
             link.target = "_blank";
@@ -218,135 +153,76 @@ document.addEventListener("DOMContentLoaded", async function () {
         } else {
 
             link.href = "#";
+
             link.addEventListener("click", function (event) {
                 event.preventDefault();
-                alert("Instagram link will be added soon.");
+                alert("Instagram account link will be added soon.");
             });
+
         }
-    }
 
-    setupInstagram(topInstagram);
-    setupInstagram(contactInstagram);
+    });
 
 
-    // =========================================
-    // TOP GOOGLE MAPS ICON
-    // =========================================
+    // =====================================
+    // GOOGLE MAPS LINKS
+    // =====================================
 
-    const topMap = document.getElementById("topMapLink");
+    const mapLinks = [
+        document.getElementById("topMapLink"),
+        document.getElementById("mapLink")
+    ];
 
-    const contactMap = document.getElementById("mapLink");
-
-    function setupMap(link) {
+    mapLinks.forEach(function (link) {
 
         if (!link) return;
 
-        if (map.googleMapsUrl) {
+        if (map.googleMapsUrl && map.googleMapsUrl.trim() !== "") {
 
             link.href = map.googleMapsUrl;
             link.target = "_blank";
             link.rel = "noopener noreferrer";
 
+            const paragraph = link.querySelector("p");
+
+            if (paragraph) {
+                paragraph.textContent = "View Office Location";
+            }
+
         } else {
 
             link.href = "#";
+
             link.addEventListener("click", function (event) {
                 event.preventDefault();
                 alert("Google Maps location will be added soon.");
             });
+
         }
-    }
 
-    setupMap(topMap);
-    setupMap(contactMap);
-
-
-    // =========================================
-    // DYNAMIC SERVICES
-    // =========================================
-
-    const servicesGrid = document.querySelector(".services-grid");
-
-    if (servicesGrid && Array.isArray(companyData.services)) {
-
-        servicesGrid.innerHTML = companyData.services.map(function (service, index) {
-
-            const icons = ["⌂", "🏗", "▣", "♙"];
-
-            return `
-                <article class="service-card">
-
-                    <div class="service-icon">
-                        ${icons[index % icons.length]}
-                    </div>
-
-                    <h3>${escapeHTML(service.name)}</h3>
-
-                    <p>${escapeHTML(service.description)}</p>
-
-                    <a href="#inquiry"
-                       class="service-inquiry"
-                       data-service="${escapeHTML(service.name)}">
-                        Enquire Now →
-                    </a>
-
-                </article>
-            `;
-
-        }).join("");
-    }
-
-
-    // =========================================
-    // SERVICE TO INQUIRY FORM
-    // =========================================
-
-    const serviceSelect = document.getElementById("inquiryType");
-
-    document.querySelectorAll(".service-inquiry").forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-            if (!serviceSelect) return;
-
-            const serviceName = link.dataset.service;
-
-            let option = Array.from(serviceSelect.options).find(function (item) {
-                return item.value === serviceName ||
-                       item.textContent === serviceName;
-            });
-
-            if (!option) {
-
-                option = document.createElement("option");
-
-                option.value = serviceName;
-                option.textContent = serviceName;
-
-                serviceSelect.appendChild(option);
-            }
-
-            serviceSelect.value = serviceName;
-        });
     });
 
 
-    // =========================================
-    // MOBILE NAVIGATION
-    // =========================================
+    // =====================================
+    // MOBILE MENU
+    // =====================================
 
     const menuToggle = document.getElementById("menuToggle");
-
     const navLinks = document.getElementById("navLinks");
 
     if (menuToggle && navLinks) {
 
         menuToggle.addEventListener("click", function () {
 
-            navLinks.classList.toggle("active");
+            const isOpen = navLinks.classList.toggle("active");
 
-            menuToggle.textContent =
-                navLinks.classList.contains("active") ? "✕" : "☰";
+            menuToggle.textContent = isOpen ? "✕" : "☰";
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
         });
 
         navLinks.querySelectorAll("a").forEach(function (link) {
@@ -356,14 +232,32 @@ document.addEventListener("DOMContentLoaded", async function () {
                 navLinks.classList.remove("active");
 
                 menuToggle.textContent = "☰";
+
+                menuToggle.setAttribute("aria-expanded", "false");
+
             });
+
         });
+
+        document.addEventListener("click", function (event) {
+
+            if (
+                !navLinks.contains(event.target) &&
+                !menuToggle.contains(event.target)
+            ) {
+                navLinks.classList.remove("active");
+                menuToggle.textContent = "☰";
+                menuToggle.setAttribute("aria-expanded", "false");
+            }
+
+        });
+
     }
 
 
-    // =========================================
-    // WHATSAPP INQUIRY FORM
-    // =========================================
+    // =====================================
+    // PROPERTY INQUIRY FORM
+    // =====================================
 
     const inquiryForm = document.getElementById("inquiryForm");
 
@@ -377,11 +271,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const phone = document.getElementById("customerPhone").value.trim();
 
-            const service = document.getElementById("inquiryType").value;
+            const propertyType = document.getElementById("inquiryType").value;
 
             const message = document.getElementById("customerMessage").value.trim();
 
-            if (!name || !phone || !service || !message) {
+
+            if (!name || !phone || !propertyType || !message) {
                 alert("Please fill in all details.");
                 return;
             }
@@ -391,14 +286,25 @@ document.addEventListener("DOMContentLoaded", async function () {
                 return;
             }
 
+
             const whatsappMessage =
-                "Namaste " + (company.name || "Shree Sundar Enterprises") + "!\n\n" +
-                "I want to make an inquiry.\n\n" +
+
+                "Namaste Shree Sundar Enterprises!\n\n" +
+
+                "I want to make a property inquiry.\n\n" +
+
                 "Name: " + name + "\n" +
+
                 "Mobile: " + phone + "\n" +
-                "Service: " + service + "\n" +
+
+                "Property Type: " + propertyType + "\n" +
+
                 "Message: " + message + "\n\n" +
-                "Please contact me. Thank you.";
+
+                "Please share more information.\n\n" +
+
+                "Thank you.";
+
 
             const whatsappURL =
                 "https://wa.me/" +
@@ -406,14 +312,50 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "?text=" +
                 encodeURIComponent(whatsappMessage);
 
-            window.open(whatsappURL, "_blank", "noopener,noreferrer");
+
+            window.open(
+                whatsappURL,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
         });
+
     }
 
 
-    // =========================================
+    // =====================================
+    // SERVICE ENQUIRY BUTTONS
+    // =====================================
+
+    document.querySelectorAll(".service-inquiry").forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const serviceName = button.dataset.service;
+
+            const select = document.getElementById("inquiryType");
+
+            if (select && serviceName) {
+
+                const matchingOption = Array.from(select.options).find(
+                    option => option.value === serviceName
+                );
+
+                if (matchingOption) {
+                    select.value = serviceName;
+                }
+
+            }
+
+        });
+
+    });
+
+
+    // =====================================
     // FOOTER YEAR
-    // =========================================
+    // =====================================
 
     const currentYear = document.getElementById("currentYear");
 
@@ -422,38 +364,21 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
 
-    // =========================================
-    // SETTINGS: HIDE SECTIONS
-    // =========================================
+    // =====================================
+    // IMAGE FALLBACK
+    // =====================================
 
-    const projectsSection = document.getElementById("projects");
+    document.querySelectorAll("img").forEach(function (img) {
 
-    const gallerySection = document.getElementById("gallery");
+        img.addEventListener("error", function () {
 
-    const showProjects = settings.showProjects !== false;
-    const showGallery = settings.showGallery !== false;
+            console.warn("Image not found:", img.src);
 
-    if (projectsSection && !showProjects) {
-        projectsSection.hidden = true;
-    }
+        });
 
-    if (gallerySection && !showGallery) {
-        gallerySection.hidden = true;
-    }
-
-    if (topInstagram && settings.showInstagram === false) {
-        topInstagram.hidden = true;
-    }
-
-    if (topMap && settings.showGoogleMaps === false) {
-        topMap.hidden = true;
-    }
+    });
 
 
-    // =========================================
-    // DONE
-    // =========================================
-
-    console.log("Shree Sundar Enterprises website initialized.");
+    console.log("Shree Sundar Enterprises website loaded.");
 
 });
