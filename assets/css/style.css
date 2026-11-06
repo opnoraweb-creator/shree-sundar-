@@ -1002,3 +1002,98 @@ body.lightbox-open {
     }
 
 }
+
+/* TOP HEADER SOCIAL ICONS */
+
+.header-social {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.social-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #f2f4f6;
+    transition: 0.25s;
+}
+
+.social-icon svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.call-icon {
+    color: #2878c8;
+}
+
+.whatsapp-icon {
+    color: #ffffff;
+    background: #20b85a;
+}
+
+.whatsapp-icon svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+.instagram-icon {
+    color: #d62976;
+}
+
+.maps-icon {
+    color: #d94343;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 13px rgba(0,0,0,0.15);
+}
+
+@media(max-width: 760px) {
+    .navbar {
+        flex-wrap: nowrap;
+    }
+
+    .header-social {
+        gap: 7px;
+    }
+
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-icon svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .menu-toggle {
+        padding: 5px 9px;
+        font-size: 20px;
+    }
+
+    .nav-links {
+        order: 3;
+    }
+}
+
+@media(max-width: 360px) {
+    .header-social {
+        gap: 4px;
+    }
+
+    .social-icon {
+        width: 29px;
+        height: 29px;
+    }
+}
