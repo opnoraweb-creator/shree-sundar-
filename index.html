@@ -18,6 +18,132 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- TRUST BAR ONLY - NEW DESIGN -->
+    <style>
+        .trust-bar {
+            padding: 0;
+            background: #222a33;
+            overflow: hidden;
+        }
+
+        .trust-services {
+            width: min(1160px, 92%);
+            margin: auto;
+            padding: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .trust-service-card {
+            min-height: 145px;
+            padding: 15px 8px;
+            background: #ffffff;
+            color: #111111;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+        }
+
+        .trust-service-card svg {
+            width: 57px;
+            height: 57px;
+            margin-bottom: 9px;
+            fill: #111111;
+            stroke: #111111;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .trust-service-card h3 {
+            color: #111111;
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.25;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .trust-red-strip {
+            width: 100%;
+            padding: 19px 3%;
+            background: #ed1728;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            text-align: center;
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .trust-red-strip span {
+            white-space: nowrap;
+        }
+
+        .trust-red-strip b {
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 760px) {
+            .trust-services {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 13px;
+                padding: 22px 0;
+            }
+
+            .trust-service-card {
+                min-height: 125px;
+                padding: 12px 7px;
+            }
+
+            .trust-service-card svg {
+                width: 45px;
+                height: 45px;
+                margin-bottom: 7px;
+            }
+
+            .trust-service-card h3 {
+                font-size: 13px;
+            }
+
+            .trust-red-strip {
+                gap: 7px;
+                padding: 14px 8px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .trust-service-card {
+                min-height: 112px;
+            }
+
+            .trust-service-card h3 {
+                font-size: 11px;
+            }
+
+            .trust-service-card svg {
+                width: 39px;
+                height: 39px;
+            }
+
+            .trust-red-strip {
+                font-size: 10px;
+                gap: 5px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -187,32 +313,115 @@
 </section>
 
 
-<!-- ================= TRUST BAR ================= -->
+<!-- ================= UPDATED TRUST BAR ================= -->
 
 <section class="trust-bar">
-    <div class="container trust-grid">
 
-        <div>
-            <h3>Property</h3>
-            <p>Real Estate Solutions</p>
+    <div class="trust-services">
+
+        <!-- REAL ESTATE & PROPERTY -->
+        <div class="trust-service-card">
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M5 29 L32 7 L59 29"
+                      fill="none" stroke-width="5"/>
+                <path d="M12 27 V57 H52 V27 L32 11 Z"/>
+                <rect x="25" y="38" width="14" height="19"
+                      fill="#ffffff"/>
+                <rect x="18" y="30" width="7" height="7"
+                      fill="#ffffff"/>
+                <rect x="39" y="30" width="7" height="7"
+                      fill="#ffffff"/>
+            </svg>
+
+            <h3>REAL ESTATE &<br>PROPERTY</h3>
+
         </div>
 
-        <div>
-            <h3>Plots</h3>
-            <p>Residential & Commercial</p>
+
+        <!-- CONSTRUCTION & DEVELOPMENT -->
+        <div class="trust-service-card">
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M5 15 H57 M17 15 V57 M17 15 L11 57
+                         M17 15 L23 57 M11 57 H23
+                         M17 15 L28 8 M17 15 L7 9"
+                      fill="none" stroke-width="3"/>
+                <path d="M28 8 H59 L55 13 H28 Z"/>
+                <path d="M53 13 V35 M53 35 L49 40
+                         M53 35 L57 40"
+                      fill="none" stroke-width="2"/>
+                <path d="M37 38 H58 V57 H37 Z"/>
+                <path d="M42 43 H46 V47 H42 Z
+                         M50 43 H54 V47 H50 Z
+                         M42 50 H46 V54 H42 Z
+                         M50 50 H54 V54 H50 Z"
+                      fill="#ffffff" stroke="none"/>
+            </svg>
+
+            <h3>CONSTRUCTION &<br>DEVELOPMENT</h3>
+
         </div>
 
-        <div>
-            <h3>Land</h3>
-            <p>Agricultural Land</p>
+
+        <!-- DISTRIBUTION & TRADING -->
+        <div class="trust-service-card">
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M5 13 H39 V43 H5 Z"/>
+                <path d="M39 25 H49 L59 36 V43 H39 Z"/>
+                <path d="M44 29 V36 H55 L48 29 Z"
+                      fill="#ffffff" stroke="none"/>
+                <circle cx="17" cy="48" r="7"/>
+                <circle cx="49" cy="48" r="7"/>
+                <circle cx="17" cy="48" r="3"
+                        fill="#ffffff" stroke="none"/>
+                <circle cx="49" cy="48" r="3"
+                        fill="#ffffff" stroke="none"/>
+            </svg>
+
+            <h3>DISTRIBUTION &<br>TRADING</h3>
+
         </div>
 
-        <div>
-            <h3>Trust</h3>
-            <p>Customer First</p>
+
+        <!-- CONSULTANCY SERVICES -->
+        <div class="trust-service-card">
+
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="32" cy="17" r="10"/>
+                <circle cx="12" cy="25" r="7"/>
+                <circle cx="52" cy="25" r="7"/>
+                <path d="M13 54 V47 C13 35 21 29 32 29
+                         C43 29 51 35 51 47 V54 Z"/>
+                <path d="M2 51 V43 C2 36 6 33 12 33
+                         C16 33 19 35 21 38
+                         M62 51 V43 C62 36 58 33 52 33
+                         C48 33 45 35 43 38"
+                      fill="none" stroke-width="3"/>
+            </svg>
+
+            <h3>CONSULTANCY<br>SERVICES</h3>
+
         </div>
 
     </div>
+
+
+    <!-- ORIGINAL RED LABEL STRIP - UNCHANGED -->
+
+    <div class="trust-red-strip">
+
+        <span>PEOPLE</span>
+        <b>|</b>
+        <span>PRODUCTS</span>
+        <b>|</b>
+        <span>PROJECTS</span>
+        <b>|</b>
+        <span>PROGRESS</span>
+
+    </div>
+
 </section>
 
 
