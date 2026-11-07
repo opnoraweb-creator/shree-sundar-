@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +18,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <!-- TRUST BAR ONLY - NEW DESIGN -->
     <style>
+        /* TRUST BAR */
+
         .trust-bar {
             padding: 0;
             background: #222a33;
@@ -39,30 +39,30 @@
         .trust-service-card {
             min-height: 145px;
             padding: 15px 8px;
-            background: #ffffff;
-            color: #111111;
+            background: #fff;
+            color: #111;
             border-radius: 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 5px 12px rgba(0,0,0,.25);
         }
 
         .trust-service-card svg {
             width: 57px;
             height: 57px;
             margin-bottom: 9px;
-            fill: #111111;
-            stroke: #111111;
+            fill: #111;
+            stroke: #111;
             stroke-width: 1.8;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
         .trust-service-card h3 {
-            color: #111111;
+            color: #111;
             font-size: 16px;
             font-weight: 800;
             line-height: 1.25;
@@ -74,7 +74,7 @@
             width: 100%;
             padding: 19px 3%;
             background: #ed1728;
-            color: #ffffff;
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -83,7 +83,7 @@
             text-align: center;
             font-size: 19px;
             font-weight: 800;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
         }
 
         .trust-red-strip span {
@@ -91,9 +91,117 @@
         }
 
         .trust-red-strip b {
-            color: #ffffff;
-            opacity: 0.9;
+            color: #fff;
+            opacity: .9;
         }
+
+        /* SHOP BOARD - COMPACT TILES */
+
+        .board-image-wrap {
+            position: relative;
+        }
+
+        .board-image-wrap > img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .board-service-tiles {
+            position: absolute;
+            top: 24%;
+            right: 4%;
+            width: 39%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            pointer-events: none;
+        }
+
+        .board-service-tile {
+            background: #fff;
+            color: #202830;
+            border-radius: 5px;
+            padding: 5px 2px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 48px;
+        }
+
+        .board-service-tile span {
+            font-size: 19px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .board-service-tile small {
+            font-size: 6px;
+            line-height: 1.2;
+            font-weight: 800;
+            margin-top: 3px;
+        }
+
+        /* MEGA GALLERIES */
+
+        .mega-gallery-section {
+            background: #f7f8fa;
+        }
+
+        .mega-gallery-block {
+            margin-bottom: 55px;
+        }
+
+        .mega-gallery-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .mega-gallery-title {
+            text-align: center;
+            color: #222a33;
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(25px, 4vw, 36px);
+            margin-bottom: 25px;
+        }
+
+        .mega-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .mega-gallery-card {
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
+            transition: .3s;
+        }
+
+        .mega-gallery-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mega-gallery-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            cursor: zoom-in;
+        }
+
+        .mega-gallery-card h3 {
+            padding: 13px;
+            color: #222a33;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        /* TABLET */
 
         @media (max-width: 760px) {
             .trust-services {
@@ -122,6 +230,43 @@
                 padding: 14px 8px;
                 font-size: 12px;
             }
+
+            .board-service-tiles {
+                width: 35%;
+                right: 4%;
+                top: 24%;
+                gap: 2px;
+            }
+
+            .board-service-tile {
+                min-height: 29px;
+                padding: 2px 1px;
+                border-radius: 4px;
+            }
+
+            .board-service-tile span {
+                font-size: 11px;
+            }
+
+            .board-service-tile small {
+                font-size: 3.5px;
+                line-height: 1.1;
+                margin-top: 1px;
+            }
+
+            .mega-gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 13px;
+            }
+
+            .mega-gallery-card img {
+                height: 155px;
+            }
+
+            .mega-gallery-card h3 {
+                font-size: 12px;
+                padding: 10px 5px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -142,13 +287,37 @@
                 font-size: 10px;
                 gap: 5px;
             }
+
+            .board-service-tiles {
+                width: 34%;
+            }
+
+            .board-service-tile {
+                min-height: 25px;
+            }
+
+            .board-service-tile span {
+                font-size: 9px;
+            }
+
+            .board-service-tile small {
+                font-size: 3px;
+            }
+
+            .mega-gallery-grid {
+                gap: 9px;
+            }
+
+            .mega-gallery-card img {
+                height: 125px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
 <header class="header">
     <div class="container navbar">
@@ -156,7 +325,6 @@
         <a href="#home" class="brand">
             <img src="assets/images/logo/logo.png"
                  alt="Shree Sundar Enterprises Logo">
-
             <div>
                 <h2>SHREE SUNDAR</h2>
                 <span>ENTERPRISES - PALI</span>
@@ -167,6 +335,7 @@
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
+            <a href="#mega-projects">Mega Projects</a>
             <a href="#projects">Projects</a>
             <a href="#inquiry">Inquiry</a>
             <a href="#contact">Contact</a>
@@ -235,22 +404,19 @@
 
             <button class="menu-toggle"
                     id="menuToggle"
-                    aria-label="Open menu">
-                ☰
-            </button>
+                    aria-label="Open menu">☰</button>
 
         </div>
     </div>
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero" id="home">
     <div class="container hero-grid">
 
         <div class="hero-content">
-
             <span class="eyebrow">
                 WELCOME TO SHREE SUNDAR ENTERPRISES
             </span>
@@ -270,36 +436,24 @@
                 <a href="#projects" class="btn btn-primary">
                     Explore Properties
                 </a>
-
                 <a href="#contact" class="btn btn-outline">
                     Contact Us
                 </a>
             </div>
 
             <div class="hero-contact">
-                <a href="tel:+919414614853">
-                    ☎ 94146 14853
-                </a>
-
-                <a href="tel:+919214481453">
-                    ☎ 92144 81453
-                </a>
+                <a href="tel:+919414614853">☎ 94146 14853</a>
+                <a href="tel:+919214481453">☎ 92144 81453</a>
             </div>
-
         </div>
 
-        <!-- OWNER PHOTO -->
-
         <div class="hero-photo-wrapper">
-
             <div class="photo-decoration"></div>
 
             <div class="hero-photo">
-                <img
-                    src="assets/images/owner/owner.jpg"
-                    alt="Shree Vijendra Sharma - Shree Sundar Enterprises"
-                    class="zoom-image"
-                >
+                <img src="assets/images/owner/owner.jpg"
+                     alt="Shree Vijendra Sharma - Shree Sundar Enterprises"
+                     class="zoom-image">
             </div>
 
             <div class="owner-label">
@@ -307,87 +461,61 @@
                 <h3>Shree Vijendra Sharma</h3>
                 <p>Shree Sundar Enterprises</p>
             </div>
-
         </div>
+
     </div>
 </section>
 
 
-<!-- ================= UPDATED TRUST BAR ================= -->
+<!-- TRUST BAR -->
 
 <section class="trust-bar">
-
     <div class="trust-services">
 
-        <!-- REAL ESTATE & PROPERTY -->
         <div class="trust-service-card">
-
             <svg viewBox="0 0 64 64" aria-hidden="true">
                 <path d="M5 29 L32 7 L59 29"
                       fill="none" stroke-width="5"/>
                 <path d="M12 27 V57 H52 V27 L32 11 Z"/>
-                <rect x="25" y="38" width="14" height="19"
-                      fill="#ffffff"/>
-                <rect x="18" y="30" width="7" height="7"
-                      fill="#ffffff"/>
-                <rect x="39" y="30" width="7" height="7"
-                      fill="#ffffff"/>
+                <rect x="25" y="38" width="14" height="19" fill="#fff"/>
+                <rect x="18" y="30" width="7" height="7" fill="#fff"/>
+                <rect x="39" y="30" width="7" height="7" fill="#fff"/>
             </svg>
-
             <h3>REAL ESTATE &<br>PROPERTY</h3>
-
         </div>
 
-
-        <!-- CONSTRUCTION & DEVELOPMENT -->
         <div class="trust-service-card">
-
             <svg viewBox="0 0 64 64" aria-hidden="true">
                 <path d="M5 15 H57 M17 15 V57 M17 15 L11 57
                          M17 15 L23 57 M11 57 H23
                          M17 15 L28 8 M17 15 L7 9"
                       fill="none" stroke-width="3"/>
                 <path d="M28 8 H59 L55 13 H28 Z"/>
-                <path d="M53 13 V35 M53 35 L49 40
-                         M53 35 L57 40"
+                <path d="M53 13 V35 M53 35 L49 40 M53 35 L57 40"
                       fill="none" stroke-width="2"/>
                 <path d="M37 38 H58 V57 H37 Z"/>
-                <path d="M42 43 H46 V47 H42 Z
-                         M50 43 H54 V47 H50 Z
-                         M42 50 H46 V54 H42 Z
-                         M50 50 H54 V54 H50 Z"
-                      fill="#ffffff" stroke="none"/>
+                <path d="M42 43 H46 V47 H42 Z M50 43 H54 V47 H50 Z
+                         M42 50 H46 V54 H42 Z M50 50 H54 V54 H50 Z"
+                      fill="#fff" stroke="none"/>
             </svg>
-
             <h3>CONSTRUCTION &<br>DEVELOPMENT</h3>
-
         </div>
 
-
-        <!-- DISTRIBUTION & TRADING -->
         <div class="trust-service-card">
-
             <svg viewBox="0 0 64 64" aria-hidden="true">
                 <path d="M5 13 H39 V43 H5 Z"/>
                 <path d="M39 25 H49 L59 36 V43 H39 Z"/>
                 <path d="M44 29 V36 H55 L48 29 Z"
-                      fill="#ffffff" stroke="none"/>
+                      fill="#fff" stroke="none"/>
                 <circle cx="17" cy="48" r="7"/>
                 <circle cx="49" cy="48" r="7"/>
-                <circle cx="17" cy="48" r="3"
-                        fill="#ffffff" stroke="none"/>
-                <circle cx="49" cy="48" r="3"
-                        fill="#ffffff" stroke="none"/>
+                <circle cx="17" cy="48" r="3" fill="#fff" stroke="none"/>
+                <circle cx="49" cy="48" r="3" fill="#fff" stroke="none"/>
             </svg>
-
             <h3>DISTRIBUTION &<br>TRADING</h3>
-
         </div>
 
-
-        <!-- CONSULTANCY SERVICES -->
         <div class="trust-service-card">
-
             <svg viewBox="0 0 64 64" aria-hidden="true">
                 <circle cx="32" cy="17" r="10"/>
                 <circle cx="12" cy="25" r="7"/>
@@ -400,76 +528,52 @@
                          C48 33 45 35 43 38"
                       fill="none" stroke-width="3"/>
             </svg>
-
             <h3>CONSULTANCY<br>SERVICES</h3>
-
         </div>
 
     </div>
 
-
-    <!-- ORIGINAL RED LABEL STRIP - UNCHANGED -->
-
     <div class="trust-red-strip">
-
-        <span>PEOPLE</span>
-        <b>|</b>
-        <span>PRODUCTS</span>
-        <b>|</b>
-        <span>PROJECTS</span>
-        <b>|</b>
+        <span>PEOPLE</span><b>|</b>
+        <span>PRODUCTS</span><b>|</b>
+        <span>PROJECTS</span><b>|</b>
         <span>PROGRESS</span>
-
     </div>
-
 </section>
 
 
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
 
 <section class="section about-section" id="about">
     <div class="container about-grid">
 
-        <!-- SHOP BOARD WITH FOUR SERVICE TILES -->
-
         <div class="about-image board-image-wrap">
-
-            <img
-                src="assets/images/logo/shop-board.png"
-                alt="Shree Sundar Enterprises Shop Board"
-                class="zoom-image"
-            >
+            <img src="assets/images/logo/shop-board.png"
+                 alt="Shree Sundar Enterprises Shop Board"
+                 class="zoom-image">
 
             <div class="board-service-tiles">
-
                 <div class="board-service-tile">
                     <span>⌂</span>
                     <small>REAL ESTATE & PROPERTY</small>
                 </div>
-
                 <div class="board-service-tile">
                     <span>⚒</span>
                     <small>CONSTRUCTION & DEVELOPMENT</small>
                 </div>
-
                 <div class="board-service-tile">
                     <span>🚚</span>
                     <small>DISTRIBUTION & TRADING</small>
                 </div>
-
                 <div class="board-service-tile">
                     <span>♟</span>
                     <small>CONSULTANCY SERVICES</small>
                 </div>
-
             </div>
-
         </div>
 
         <div class="about-content">
-
             <span class="section-tag">ABOUT OUR COMPANY</span>
-
             <h2>Your Trusted Property Partner</h2>
 
             <p>
@@ -496,13 +600,13 @@
             <a href="#inquiry" class="btn btn-primary">
                 Make An Inquiry
             </a>
-
         </div>
+
     </div>
 </section>
 
 
-<!-- ================= SERVICES ================= -->
+<!-- SERVICES -->
 
 <section class="section services-section" id="services">
     <div class="container">
@@ -516,66 +620,36 @@
         <div class="services-grid">
 
             <article class="service-card">
-                <img
-                    src="assets/images/services/Residential Plots.jpg"
-                    alt="Residential Plots"
-                    style="width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:18px;"
-                    class="zoom-image"
-                >
-
+                <img src="assets/images/services/Residential Plots.jpg"
+                     alt="Residential Plots"
+                     style="width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:18px;"
+                     class="zoom-image">
                 <h3>Residential Plots</h3>
-                <p>
-                    Residential plot options for people
-                    looking for a suitable place to build a home.
-                </p>
-
-                <a href="#inquiry"
-                   class="service-inquiry"
-                   data-service="Residential Plots">
-                    Enquire Now →
-                </a>
+                <p>Residential plot options for people looking for a suitable place to build a home.</p>
+                <a href="#inquiry" class="service-inquiry"
+                   data-service="Residential Plots">Enquire Now →</a>
             </article>
 
             <article class="service-card">
-                <img
-                    src="assets/images/services/Commercial Plots.jpg"
-                    alt="Commercial Plots"
-                    style="width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:18px;"
-                    class="zoom-image"
-                >
-
+                <img src="assets/images/services/Commercial Plots.jpg"
+                     alt="Commercial Plots"
+                     style="width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:18px;"
+                     class="zoom-image">
                 <h3>Commercial Plots</h3>
-                <p>
-                    Commercial plot options for shops,
-                    offices and business-related requirements.
-                </p>
-
-                <a href="#inquiry"
-                   class="service-inquiry"
-                   data-service="Commercial Plots">
-                    Enquire Now →
-                </a>
+                <p>Commercial plot options for shops, offices and business-related requirements.</p>
+                <a href="#inquiry" class="service-inquiry"
+                   data-service="Commercial Plots">Enquire Now →</a>
             </article>
 
             <article class="service-card">
-                <img
-                    src="assets/images/services/Agriculture Land.jpg"
-                    alt="Agricultural Land"
-                    style="width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:18px;"
-                    class="zoom-image"
-                >
-
+                <img src="assets/images/services/Agriculture Land.jpg"
+                     alt="Agricultural Land"
+                     style="width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:18px;"
+                     class="zoom-image">
                 <h3>Agricultural Land</h3>
-                <p>
-                    Agricultural land options for customers
-                    looking for land-related opportunities.
-                </p>
-
-                <a href="#inquiry"
-                   class="service-inquiry"
-                   data-service="Agricultural Land">
-                    Enquire Now →
-                </a>
+                <p>Agricultural land options for customers looking for land-related opportunities.</p>
+                <a href="#inquiry" class="service-inquiry"
+                   data-service="Agricultural Land">Enquire Now →</a>
             </article>
 
         </div>
@@ -583,7 +657,112 @@
 </section>
 
 
-<!-- ================= PROJECTS ================= -->
+<!-- MEGA PROJECT GALLERIES -->
+
+<section class="section mega-gallery-section" id="mega-projects">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="section-tag">OUR SPECIAL PROJECTS</span>
+            <h2>Explore Our Mega Projects</h2>
+            <p>View project plans, maps and layouts.</p>
+        </div>
+
+        <!-- MEGA HI-TECH CITY -->
+
+        <div class="mega-gallery-block">
+            <h2 class="mega-gallery-title">MEGA HI-TECH CITY</h2>
+
+            <div class="mega-gallery-grid">
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-hi-tech-city/master-plan.jpg"
+                         alt="Mega Hi-Tech City Master Plan"
+                         class="zoom-image">
+                    <h3>Master Plan</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-hi-tech-city/layout-map.jpg"
+                         alt="Mega Hi-Tech City Layout Map"
+                         class="zoom-image">
+                    <h3>Layout Map</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-hi-tech-city/road-plan.jpg"
+                         alt="Mega Hi-Tech City Road Plan"
+                         class="zoom-image">
+                    <h3>Road Plan</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-hi-tech-city/plot-map.jpg"
+                         alt="Mega Hi-Tech City Plot Map"
+                         class="zoom-image">
+                    <h3>Plot Map</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-hi-tech-city/city-view.jpg"
+                         alt="Mega Hi-Tech City View"
+                         class="zoom-image">
+                    <h3>City View</h3>
+                </article>
+
+            </div>
+        </div>
+
+        <!-- MEGA TOWN MAP -->
+
+        <div class="mega-gallery-block">
+            <h2 class="mega-gallery-title">MEGA TOWN MAP</h2>
+
+            <div class="mega-gallery-grid">
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-town-map/master-map.jpg"
+                         alt="Mega Town Master Map"
+                         class="zoom-image">
+                    <h3>Master Map</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-town-map/town-plan.jpg"
+                         alt="Mega Town Plan"
+                         class="zoom-image">
+                    <h3>Town Plan</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-town-map/location-map.jpg"
+                         alt="Mega Town Location Map"
+                         class="zoom-image">
+                    <h3>Location Map</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-town-map/plot-layout.jpg"
+                         alt="Mega Town Plot Layout"
+                         class="zoom-image">
+                    <h3>Plot Layout</h3>
+                </article>
+
+                <article class="mega-gallery-card">
+                    <img src="assets/images/projects/mega-town-map/road-map.jpg"
+                         alt="Mega Town Road Map"
+                         class="zoom-image">
+                    <h3>Road Map</h3>
+                </article>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROJECTS -->
 
 <section class="section projects-section" id="projects">
     <div class="container">
@@ -602,8 +781,7 @@
             <article class="project-card">
                 <div class="project-image">
                     <img src="assets/images/projects/real-estate/a.jpg"
-                         alt="Property Demo Project A"
-                         class="zoom-image">
+                         alt="Property Demo Project A" class="zoom-image">
                 </div>
                 <div class="project-info">
                     <span>DEMO PROJECT</span>
@@ -615,8 +793,7 @@
             <article class="project-card">
                 <div class="project-image">
                     <img src="assets/images/projects/real-estate/b.jpg"
-                         alt="Property Demo Project B"
-                         class="zoom-image">
+                         alt="Property Demo Project B" class="zoom-image">
                 </div>
                 <div class="project-info">
                     <span>DEMO PROJECT</span>
@@ -628,8 +805,7 @@
             <article class="project-card">
                 <div class="project-image">
                     <img src="assets/images/projects/real-estate/c.jpg"
-                         alt="Property Demo Project C"
-                         class="zoom-image">
+                         alt="Property Demo Project C" class="zoom-image">
                 </div>
                 <div class="project-info">
                     <span>DEMO PROJECT</span>
@@ -641,8 +817,7 @@
             <article class="project-card">
                 <div class="project-image">
                     <img src="assets/images/projects/real-estate/d.jpg"
-                         alt="Property Demo Project D"
-                         class="zoom-image">
+                         alt="Property Demo Project D" class="zoom-image">
                 </div>
                 <div class="project-info">
                     <span>DEMO PROJECT</span>
@@ -654,8 +829,7 @@
             <article class="project-card">
                 <div class="project-image">
                     <img src="assets/images/projects/real-estate/e.jpg"
-                         alt="Property Demo Project E"
-                         class="zoom-image">
+                         alt="Property Demo Project E" class="zoom-image">
                 </div>
                 <div class="project-info">
                     <span>DEMO PROJECT</span>
@@ -667,8 +841,7 @@
             <article class="project-card">
                 <div class="project-image">
                     <img src="assets/images/projects/real-estate/f.jpg"
-                         alt="Property Demo Project F"
-                         class="zoom-image">
+                         alt="Property Demo Project F" class="zoom-image">
                 </div>
                 <div class="project-info">
                     <span>DEMO PROJECT</span>
@@ -680,8 +853,7 @@
             <article class="project-card">
                 <div class="project-image">
                     <img src="assets/images/projects/real-estate/g.jpg"
-                         alt="Property Demo Project G"
-                         class="zoom-image">
+                         alt="Property Demo Project G" class="zoom-image">
                 </div>
                 <div class="project-info">
                     <span>DEMO PROJECT</span>
@@ -704,17 +876,14 @@
 </section>
 
 
-<!-- ================= INQUIRY ================= -->
+<!-- INQUIRY -->
 
 <section class="section inquiry-section" id="inquiry">
     <div class="container inquiry-grid">
 
         <div class="inquiry-content">
-
             <span class="section-tag">LET'S CONNECT</span>
-
             <h2>Looking For A Plot or Land?</h2>
-
             <p>
                 Tell us your property requirement.
                 Send your inquiry directly through WhatsApp.
@@ -724,26 +893,19 @@
                 <p>☎ 94146 14853</p>
                 <p>☎ 92144 81453</p>
             </div>
-
         </div>
 
         <form class="inquiry-form" id="inquiryForm">
-
             <h3>Property Inquiry</h3>
 
             <label for="customerName">Your Name</label>
-            <input type="text"
-                   id="customerName"
-                   placeholder="Enter your name"
-                   required>
+            <input type="text" id="customerName"
+                   placeholder="Enter your name" required>
 
             <label for="customerPhone">Mobile Number</label>
-            <input type="tel"
-                   id="customerPhone"
+            <input type="tel" id="customerPhone"
                    placeholder="Enter your 10-digit mobile number"
-                   pattern="[0-9]{10}"
-                   maxlength="10"
-                   required>
+                   pattern="[0-9]{10}" maxlength="10" required>
 
             <label for="inquiryType">Select Property Type</label>
             <select id="inquiryType" required>
@@ -755,21 +917,20 @@
             </select>
 
             <label for="customerMessage">Your Message</label>
-            <textarea id="customerMessage"
-                      rows="4"
+            <textarea id="customerMessage" rows="4"
                       placeholder="Tell us your property requirement..."
                       required></textarea>
 
             <button type="submit" class="btn btn-primary">
                 Send Inquiry on WhatsApp →
             </button>
-
         </form>
+
     </div>
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
 
 <section class="section contact-section" id="contact">
     <div class="container">
@@ -777,10 +938,7 @@
         <div class="section-heading">
             <span class="section-tag">GET IN TOUCH</span>
             <h2>Contact Shree Sundar Enterprises</h2>
-            <p>
-                For more information, contact us
-                or visit our office.
-            </p>
+            <p>For more information, contact us or visit our office.</p>
         </div>
 
         <div class="contact-grid">
@@ -798,25 +956,20 @@
             </a>
 
             <a href="https://wa.me/919414614853"
-               target="_blank"
-               rel="noopener noreferrer"
+               target="_blank" rel="noopener noreferrer"
                class="contact-card">
                 <span>◉</span>
                 <h3>WhatsApp</h3>
                 <p>Chat With Us</p>
             </a>
 
-            <a href="#"
-               class="contact-card"
-               id="instagramLink">
+            <a href="#" class="contact-card" id="instagramLink">
                 <span>◎</span>
                 <h3>Instagram</h3>
                 <p>Coming Soon</p>
             </a>
 
-            <a href="#"
-               class="contact-card"
-               id="mapLink">
+            <a href="#" class="contact-card" id="mapLink">
                 <span>⌖</span>
                 <h3>Google Maps</h3>
                 <p>Location Coming Soon</p>
@@ -827,7 +980,7 @@
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 <footer class="footer">
     <div class="container footer-content">
@@ -848,8 +1001,7 @@
         <p class="powered">
             Website Powered by
             <a href="https://digiprofiles.in/"
-               target="_blank"
-               rel="noopener noreferrer">
+               target="_blank" rel="noopener noreferrer">
                 DigiProfiles.in
             </a>
         </p>
@@ -858,34 +1010,25 @@
 </footer>
 
 
-<!-- ================= IMAGE ZOOM ================= -->
+<!-- IMAGE ZOOM -->
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
 
-    <button class="lightbox-close"
-            id="lightboxClose"
-            aria-label="Close image">
-        ×
-    </button>
+    <button class="lightbox-close" id="lightboxClose"
+            aria-label="Close image">×</button>
 
-    <button class="lightbox-prev"
-            id="lightboxPrev"
-            aria-label="Previous image">
-        ❮
-    </button>
+    <button class="lightbox-prev" id="lightboxPrev"
+            aria-label="Previous image">❮</button>
 
     <img src="" alt="Zoomed Property Image" id="lightboxImage">
 
-    <button class="lightbox-next"
-            id="lightboxNext"
-            aria-label="Next image">
-        ❯
-    </button>
+    <button class="lightbox-next" id="lightboxNext"
+            aria-label="Next image">❯</button>
 
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- JAVASCRIPT -->
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/gallery.js"></script>
