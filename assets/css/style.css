@@ -1336,3 +1336,72 @@ select:focus-visible {
         font-size: 16px;
     }
 }
+
+
+/* Store Board Service Tiles */
+
+.board-image-wrap {
+    position: relative;
+}
+
+.board-image-wrap > img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.board-service-tiles {
+    position: absolute;
+    top: 24%;
+    right: 4%;
+    width: 39%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.board-service-tile {
+    background: #ffffff;
+    color: #202830;
+    border-radius: 5px;
+    padding: 5px 2px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+}
+
+.board-service-tile span {
+    font-size: 19px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.board-service-tile small {
+    font-size: 6px;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-top: 3px;
+}
+
+@media (max-width: 600px) {
+    .board-service-tiles {
+        gap: 3px;
+    }
+
+    .board-service-tile {
+        min-height: 35px;
+        padding: 3px 1px;
+    }
+
+    .board-service-tile span {
+        font-size: 13px;
+    }
+
+    .board-service-tile small {
+        font-size: 4px;
+    }
+}
