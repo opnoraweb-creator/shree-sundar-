@@ -395,7 +395,8 @@ section {
     left: -15px;
     bottom: 12px;
     width: 82%;
-    padding: 22px 25px;
+    max-width: 270px;
+    padding: 12px 16px;
     background: white;
     border-left: 6px solid var(--red);
     border-radius: 10px;
@@ -405,22 +406,23 @@ section {
 .owner-label span {
     display: block;
     color: var(--red);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 7px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
 }
 
 .owner-label h3 {
     color: var(--dark);
-    font-size: 20px;
-    line-height: 1.4;
+    font-size: 19px;
+    line-height: 1.25;
+    margin: 5px 0;
 }
 
 .owner-label p {
     color: var(--muted);
-    font-size: 13px;
-    margin-top: 5px;
+    font-size: 12px;
+    margin: 0;
 }
 
 
@@ -510,6 +512,23 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* SHOP BOARD: SHOW FULL IMAGE */
+
+.about-image.board-image-wrap {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.about-image.board-image-wrap > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .about-content h2 {
@@ -790,29 +809,21 @@ section {
     font-weight: 800;
 }
 
-/* CALL BLUE */
-
 .contact-card:nth-child(1) span,
 .contact-card:nth-child(2) span {
     color: var(--blue);
     background: #eaf3ff;
 }
 
-/* WHATSAPP GREEN */
-
 .contact-card:nth-child(3) span {
     color: var(--green);
     background: #e8f9ef;
 }
 
-/* INSTAGRAM PINK */
-
 .contact-card:nth-child(4) span {
     color: var(--pink);
     background: #fceaf1;
 }
-
-/* MAPS RED */
 
 .contact-card:nth-child(5) span {
     color: var(--map-red);
@@ -983,7 +994,6 @@ section {
     .contact-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-
 }
 
 
@@ -1106,6 +1116,12 @@ section {
     .owner-label {
         left: 0;
         width: 88%;
+        padding: 10px 13px;
+        max-width: 235px;
+    }
+
+    .owner-label h3 {
+        font-size: 16px;
     }
 
 
@@ -1139,6 +1155,11 @@ section {
 
     .about-image {
         height: 300px;
+    }
+
+    /* Keep complete shop board visible on mobile */
+    .about-image.board-image-wrap {
+        height: auto;
     }
 
     .about-content {
@@ -1202,7 +1223,6 @@ section {
         text-align: center;
         gap: 13px;
     }
-
 }
 
 
@@ -1270,7 +1290,87 @@ section {
     .lightbox img {
         max-width: 100%;
     }
+}
 
+
+/* ================= STORE BOARD SERVICE TILES ================= */
+
+.board-image-wrap {
+    position: relative;
+}
+
+.board-image-wrap > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.board-service-tiles {
+    position: absolute;
+
+    /* Adjust these values after checking the live board */
+    top: 24%;
+    right: 4%;
+    width: 39%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+
+    pointer-events: none;
+}
+
+.board-service-tile {
+    background: #ffffff;
+    color: #202830;
+    border-radius: 5px;
+    padding: 5px 2px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 48px;
+}
+
+.board-service-tile span {
+    font-size: 19px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.board-service-tile small {
+    font-size: 6px;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-top: 3px;
+}
+
+
+/* ================= BOARD TILES - MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .board-service-tiles {
+        gap: 3px;
+    }
+
+    .board-service-tile {
+        min-height: 35px;
+        padding: 3px 1px;
+    }
+
+    .board-service-tile span {
+        font-size: 13px;
+    }
+
+    .board-service-tile small {
+        font-size: 4px;
+    }
 }
 
 
@@ -1300,108 +1400,5 @@ select:focus-visible {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
-    }
-
-}
-
-/* Compact Owner Label */
-.owner-label {
-    padding: 12px 16px;
-    max-width: 270px;
-}
-
-.owner-label span {
-    font-size: 10px;
-    letter-spacing: 1px;
-}
-
-.owner-label h3 {
-    font-size: 19px;
-    line-height: 1.25;
-    margin: 5px 0;
-}
-
-.owner-label p {
-    font-size: 12px;
-    margin: 0;
-}
-
-@media (max-width: 600px) {
-    .owner-label {
-        padding: 10px 13px;
-        max-width: 235px;
-    }
-
-    .owner-label h3 {
-        font-size: 16px;
-    }
-}
-
-
-/* Store Board Service Tiles */
-
-.board-image-wrap {
-    position: relative;
-}
-
-.board-image-wrap > img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.board-service-tiles {
-    position: absolute;
-    top: 24%;
-    right: 4%;
-    width: 39%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-}
-
-.board-service-tile {
-    background: #ffffff;
-    color: #202830;
-    border-radius: 5px;
-    padding: 5px 2px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 48px;
-}
-
-.board-service-tile span {
-    font-size: 19px;
-    line-height: 1.2;
-    font-weight: 800;
-}
-
-.board-service-tile small {
-    font-size: 6px;
-    line-height: 1.2;
-    font-weight: 800;
-    margin-top: 3px;
-}
-
-@media (max-width: 600px) {
-    .board-service-tiles {
-        gap: 3px;
-    }
-
-    .board-service-tile {
-        min-height: 35px;
-        padding: 3px 1px;
-    }
-
-    .board-service-tile span {
-        font-size: 13px;
-    }
-
-    .board-service-tile small {
-        font-size: 4px;
     }
 }
